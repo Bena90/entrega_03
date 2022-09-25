@@ -17,13 +17,13 @@ const getUserById = async (id) => {
 }
 
 const checkUser = async (email) => {
-    console.log('entro', email)
+
     const user = await User.findOne({ email })
     if (user){
-        console.log('entro', user)
+
         return user
     } else {
-        console.log('else entro', user)
+
         return false
     }
 }

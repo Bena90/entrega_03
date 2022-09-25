@@ -6,7 +6,7 @@ const generateJWT = (id) =>{
     },
     process.env.JWT_SECRET,
     {
-        expiresIn: '30d'
+        expiresIn: '1d'
     })
 }
 

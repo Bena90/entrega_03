@@ -12,21 +12,17 @@ const createUser = async (user) => {
 }
 
 const authenticateUser = async (user) => {
-    const {username, password } = user
-    console.log (username, password)
-    const requestUser = await userDao.checkUser(username)
-    console.log(requestUser)
+    const {email, password } = user
+    const requestUser = await userDao.checkUser(email)
     if (!requestUser) throw "Invalid Credentials"
-
-    if (!await requestUser.checkPassword(user.password)) throw "Invalid Credentials"
-
+    if (!await requestUser.checkPassword(password)) throw "Invalid Credentials"
     const currentUser = ({
         _id: requestUser._id,
         username: requestUser.username,
         email: requestUser.email,
         firstName: requestUser.firstName,
         lastName: requestUser.lastName,
-        token: generateJWT(user._id)
+        token: generateJWT(requestUser._id)
     })
 
     return currentUser

@@ -4,6 +4,7 @@ const loginUser = async (req, res) => {
     console.log(req.body)
     try {
         const user = await userServices.authenticateUser(req.body)
+        
         res.json(user)
 
     } catch (err) {
@@ -22,7 +23,14 @@ const registerUser = async (req, res) => {
     }
 }
 
+const profileUser = (req, res) => {
+    const {user} = req;
+
+    res.json (user)
+}
+
 export default{
     loginUser,
     registerUser,
+    profileUser
 }
